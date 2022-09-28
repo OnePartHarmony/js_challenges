@@ -34,7 +34,9 @@ addOne(-5) //=> -4
 -----------------------------------------------------------------*/
 // Your solution for 01-addOne here:
 
-
+const addOne = (num) => {
+  return num +1
+}
 
 
 
@@ -57,7 +59,13 @@ addTwoNumbers('Hello', 5) //=> NaN
 -----------------------------------------------------------------*/
 // Your solution for 02-addTwoNumbers here:
 
-
+const addTwoNumbers = (num1, num2) => {
+  if (typeof num1 === "number" && typeof num2 === "number") {
+   return num1 + num2
+  } else {
+    return NaN
+  }
+}
 
 
 
@@ -79,6 +87,15 @@ sumNumbers([2, 10, -5]) //=> 7
 sumNumbers([]) //=> 0
 -----------------------------------------------------------------*/
 // Your solution for 03-sumNumbers here:
+const sumNumbers = (array) => {
+  let sum = 0
+  for (let i=0; i < array.length; i++) {
+    sum += array[i]
+  }
+  return sum
+}
+
+console.log(sumNumbers([40,7,13,7]))
 
 
 
@@ -102,7 +119,15 @@ add(1,50,1.23) //=> 52.23
 add(7,-12) //=> -5
 -----------------------------------------------------------------*/
 // Your solution for 04-addList here:
+const addList = function() {
+  let sum = 0
+  for (i=0; i< arguments.length; i++) {
+    sum += arguments[i]
+  }
+  return sum
+}
 
+console.log(addList(40,13,7,5))
 
 
 
@@ -127,6 +152,15 @@ computeRemainder(10.5, 3) //=> 1.5
 -----------------------------------------------------------------*/
 // Your solution for 05-computeRemainder:
 
+const computeRemainder = (dividend, divisor) => {
+  if (divisor === 0) {
+    return Infinity
+  } else {
+    let quotient = dividend / divisor
+    let roundedQuotient = Math.floor(quotient)
+    return dividend - (roundedQuotient * divisor)
+  }
+}
 
 
 
@@ -150,7 +184,16 @@ range(5,2) //=> "First argument must be less than second"
 -----------------------------------------------------------------*/
 // Your solution for 06-range here:
 
-
+const range = (int1, int2) => {
+  if (int2 < int1) {
+    return "First argument must be less than second"
+  }
+  let array = []
+  for (let i=int1; i<int2; i++) {
+    array.push(i)
+  }
+  return array
+}
 
 
 
@@ -169,6 +212,14 @@ reverseUpcaseString("SEI Rocks!"); //=> "!SKCOR IES"
 -----------------------------------------------------------------*/
 // Your solution for 07-reverseUpcaseString here:
 
+const reverseUpcaseString = (string) => {
+  const upperString = string.toUpperCase()
+  let reverseString = ""
+  for (let i = upperString.length -1; i>=0; i--) {
+    reverseString += upperString[i]
+  }
+  return reverseString
+}
 
 
 
@@ -190,7 +241,13 @@ removeEnds('a'); //=> "" (empty string)
 -----------------------------------------------------------------*/
 // Your solution for 08-removeEnds here:
 
-
+const removeEnds = (string) => {
+  let newString = ""
+  for (let i=1; i < string.length -1; i++) {
+    newString += string[i]
+  }
+  return newString
+}
 
 
 
@@ -212,8 +269,16 @@ charCount('hello') //=> { h: 1, e: 1, l: 2, o: 1 }
 charCount('Today is fantastic!') //=> { T: 1, o: 1, d: 1, a: 3, y: 1, ' ': 2, i: 2, s: 2, f: 1, n: 1, t: 2, c: 1, '!': 1 }
 -----------------------------------------------------------------*/
 // Your solution for 09-charCount here:
-
-
+const charCount = (string) => {
+  const stringArray = string.split("")
+  const charObject = stringArray.reduce((a,b) => {
+    const currentCount = a[b] ?? 0
+    return {
+      ...a, [b]: currentCount + 1
+    }
+  }, [])
+  return charObject
+}
 
 
 
