@@ -95,7 +95,6 @@ const sumNumbers = (array) => {
   return sum
 }
 
-console.log(sumNumbers([40,7,13,7]))
 
 
 
@@ -127,7 +126,6 @@ const addList = function() {
   return sum
 }
 
-console.log(addList(40,13,7,5))
 
 
 
@@ -304,6 +302,13 @@ formatWithPadding(1234, '*', 3); //=> "1234"
 -----------------------------------------------------------------*/
 // Your solution for 10-formatWithPadding here:
 
+const formatWithPadding = (int,pad,length) => {
+  let stringInt = int.toString()
+  while (stringInt.length < length) {
+    stringInt = pad + stringInt
+  }
+  return stringInt
+}
 
 
 
@@ -329,7 +334,16 @@ isPalindrome(''); //=> true
 -----------------------------------------------------------------*/
 // Your solution for 11-isPalindrome here:
 
-
+const isPalindrome = (string) => {
+  let allLetters = string.replace(/[^a-zA-Z]+/g, '')
+  let uppercase = allLetters.toUpperCase()
+  for (let i = 0; i<uppercase.length; i++) {
+      if (uppercase.charAt(i) !== uppercase.charAt(uppercase.length - (i + 1))){
+          return false
+      }        
+  }
+  return true
+}
 
 
 
@@ -356,7 +370,18 @@ hammingDistance('abc', 'ab'); //=> NaN
 // Your solution for 12-hammingDistance here:
 
 
-
+const hammingDistance = (string1,string2) => {
+  if (string1.length !== string2.length){
+    return NaN
+  }
+  let distance = 0
+  for (let i=0; i<string1.length; i++) {
+    if (string1[i] !== string2[i]) {
+      distance++
+    }
+  }
+  return distance
+}
 
 
 /*-----------------------------------------------------------------
@@ -379,7 +404,14 @@ mumble('!A 2'); //=> '!-AA-   -2222'
 -----------------------------------------------------------------*/
 // Your solution for 13-mumble here:
 
-
+const mumble = (string) => {
+  let mumbleArray = []
+  for (let i=0; i<string.length; i++) {
+    let charString = string[i].repeat(i+1)
+    mumbleArray.push(charString)
+  }
+  return mumbleArray.join("-")
+}
 
 
 
@@ -402,6 +434,15 @@ fromPairs([ ['name', 'Sam"], ['age', 24], ['name', 'Sally'] ]) //=> { name: "Sal
 // Your solution for 14-fromPairs here:
 
 
+const fromPairs = (array) => {
+  let object = {}
+  array.forEach(pair => {
+    object[pair[0]] = pair[1]
+  })
+  return object
+}
+
+//I also like to eat banana chips.
 
 
 
