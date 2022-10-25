@@ -464,6 +464,15 @@ mergeObjects({a: 1, b: 2, c: 3}, {d: 4}, {b: 22, d: 44});  //=> {a: 1, b: 22, c:
 -----------------------------------------------------------------*/
 // Your solution for 15-mergeObjects here:
 
+const mergeObjects = function() {
+  const argArray = Array.from(arguments)
+  let newObject = {}
+  for (let i=0; i<argArray.length; i++) {
+      Object.assign(newObject, argArray[i]) 
+  }
+  return newObject
+}
+
 
 
 
@@ -501,7 +510,15 @@ findHighestPriced([
 //=> { sku: 'b2', price: 50 }
 -----------------------------------------------------------------*/
 // Your solution for 16-findHighestPriced here:
-
+const findHighestPriced = (array) => {
+  let pricedObjectIndex = 0
+  array.forEach((object, index) => {
+    if (object.price > array[pricedObjectIndex].price) {
+      pricedObjectIndex = index
+    }
+  })
+  return array[pricedObjectIndex]
+}
 
 
 
@@ -532,7 +549,14 @@ mapArray( ['rose', 'tulip', 'daisy'], function(f, i) {
 //=> ["1 - rose", "2 - tulip", "3 - daisy"]
 -----------------------------------------------------------------*/
 // Your solution for 17-mapArray here:
-
+const mapArray = (array, someFunc) => {
+  let newArray = []
+  array.forEach((item, index) => {
+    let someReturn = someFunc(item, index)
+    newArray.push(someReturn)
+  })
+  return newArray
+}
 
 
 
@@ -570,7 +594,13 @@ reduceArray( ['Yes', 'No', 'Yes', 'Maybe'], function(acc, v) {
 //=> {"Yes": 2, "No": 1, "Maybe": 1}
 -----------------------------------------------------------------*/
 // Your solution for 18-reduceArray here:
-
+const reduceArray = (array, someFunc, initialValue) => {
+  let reduction = initialValue
+  array.forEach((item,index) => {
+    reduction = someFunc(reduction, item, index)
+  })
+  return reduction
+}
 
 
 
@@ -601,7 +631,20 @@ flatten( [1, [2, [3, [4]]], 1, 'a', ['b', 'c']] );
 //=> [1, 2, 3, 4, 1, 'a', 'b', 'c']
 -----------------------------------------------------------------*/
 // Your solution for 19-flatten here:
-
+const flatten = (array) => {
+  let flatArray = []
+  let pushItems = (array) => {
+    array.forEach(item => {
+      if (Array.isArray(item)) {
+        pushItems(item)
+      } else {
+        flatArray.push(item)
+      }
+    })
+  }
+  pushItems(array)
+  return flatArray
+}
 
 
 
