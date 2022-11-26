@@ -708,9 +708,36 @@ primeFactors(200) //=> [2, 2, 2, 5, 5]
 -----------------------------------------------------------------*/
 // Your solution for 21-primeFactors here:
 
+const primeFactors = (num) => {  
+  if (num < 2 || num % 1 != 0){
+    return []
+  }
+  if (isPrime(num)) {
+    return [num]
+  }
+  const checkPrimes = (number) => {
+    let array = []
+    for (let i = 2; i < number; i ++) {
+      if ((number / i) % 1 === 0 ) {        
+        if (isPrime(i)){
+          console.log("here", i)
+          array.push(i)
+        } else {
+          array.push(checkPrimes(i))
+        }        
+        if (isPrime(number/i)) {
+          array.push(number/i)          
+        } else {
+          array.push(checkPrimes(number/i))
+        }
+        return array.flatMap(item => item)
+      }
+    }
+  }
+  return checkPrimes(num)
+}
 
-
-
+console.log(primeFactors(200))
 
 /*-----------------------------------------------------------------
 Challenge: 22-intersection
