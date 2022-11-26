@@ -669,7 +669,18 @@ isPrime(200) //=> false
 -----------------------------------------------------------------*/
 // Your solution for 20-isPrime here:
 
-
+const isPrime = (num) => {
+  if (num < 2 || num % 1 != 0){
+    return false
+  }
+  let prime = true
+  for (let i = 2; i <= (num / 2); i ++){
+    if ((num / i) % 1 === 0 ) {
+      prime = false
+    }
+  }
+  return prime
+}
 
 
 
