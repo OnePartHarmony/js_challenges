@@ -720,7 +720,6 @@ const primeFactors = (num) => {
     for (let i = 2; i < number; i ++) {
       if ((number / i) % 1 === 0 ) {        
         if (isPrime(i)){
-          console.log("here", i)
           array.push(i)
         } else {
           array.push(checkPrimes(i))
@@ -737,7 +736,6 @@ const primeFactors = (num) => {
   return checkPrimes(num)
 }
 
-console.log(primeFactors(200))
 
 /*-----------------------------------------------------------------
 Challenge: 22-intersection
