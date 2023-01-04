@@ -808,7 +808,60 @@ balancedBrackets( '[({}[])]' ) // => true
 -----------------------------------------------------------------*/
 // Your solution for 23-balancedBrackets here:
 
-
+const balancedBrackets = (string) => {
+  if (string.length % 2 != 0){
+    return false
+  }
+  if (string[0] === ')' || string[0] === ']' || string[0] === '}') {
+    return false
+  }
+  if (string[string.length - 1] === '(' || string[string.length - 1] === '[' || string[string.length - 1] === '{') {
+    return false
+  }
+  if (string[0] === '(') {
+    if (string[string.length - 1] === ')') {
+      if (string.length === 2) {
+        return true
+      } else {
+        return balancedBrackets(string.slice(1, string.length - 1))        
+      }
+    } else {
+      if (!balancedBrackets(string.slice(0, (string.lastIndexOf(')') + 1))) || !balancedBrackets(string.slice(string.lastIndexOf(')') + 1))) {
+        return false
+      } else {
+        return true
+      }
+    }
+  } else if (string[0] === '[') {
+    if (string[string.length - 1] === ']') {
+      if (string.length === 2) {
+        return true
+      } else {
+        return balancedBrackets(string.slice(1, string.length - 1))        
+      }    
+    } else { 
+      if (!balancedBrackets(string.slice(0, (string.lastIndexOf(']') + 1))) || !balancedBrackets(string.slice(string.lastIndexOf(']') + 1))) {        
+        return false
+      } else {
+        return true
+      }
+    }
+  } else if (string[0] === '{') {
+    if (string[string.length - 1] === '}') {
+      if (string.length === 2) {
+        return true
+      } else {
+        return balancedBrackets(string.slice(1, string.length - 1))        
+      }   
+    } else {
+      if (!balancedBrackets(string.slice(0, (string.lastIndexOf('}') + 1))) || !balancedBrackets(string.slice(string.lastIndexOf('}') + 1))) {
+        return false
+      } else {
+        return true
+      }
+    }
+  }
+}
 
 
 
