@@ -765,7 +765,24 @@ intersection([1, 'a', true, 1, 1], [true, 1, 'b', 1]) //=> [1, true, 1]
 -----------------------------------------------------------------*/
 // Your solution for 22-intersection here:
 
-
+const intersection = (arr1, arr2) => {
+  let newArr = []
+  let longArr, shortArr
+  if (arr1.length >= arr2.length) {
+    longArr = arr1
+    shortArr = arr2
+  } else {
+    longArr = arr2
+    shortArr = arr1
+  }
+  shortArr.forEach(element => {
+    const inCommon = longArr.find(el => el === element)
+    if (inCommon) {
+      newArr.push(element)
+    }
+  })
+  return newArr
+}
 
 
 
