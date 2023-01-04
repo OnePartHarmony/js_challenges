@@ -909,7 +909,15 @@ isWinningTicket( [ ['ABC', 66], ['dddd', 15], ['Hello', 108] ] ) // => false
 -----------------------------------------------------------------*/
 // Your solution for 24-isWinningTicket here:
 
-
+const isWinningTicket = (ticketArray) => {
+  let matches = true
+  ticketArray.forEach(array => {
+    if (!array[0].includes(String.fromCharCode(array[1]))) {
+      matches = false
+    }
+  })
+  return matches
+}
 
 
 
