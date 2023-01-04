@@ -443,6 +443,7 @@ const fromPairs = (array) => {
 }
 
 //I also like to eat banana chips.
+//Why did I write this here? ^^^
 
 
 
@@ -467,9 +468,15 @@ mergeObjects({a: 1, b: 2, c: 3}, {d: 4}, {b: 22, d: 44});  //=> {a: 1, b: 22, c:
 const mergeObjects = function() {
   const argArray = Array.from(arguments)
   let newObject = {}
-  for (let i=0; i<argArray.length; i++) {
-      Object.assign(newObject, argArray[i]) 
-  }
+  // for (let i=0; i<argArray.length; i++) {
+      // Object.assign(newObject, argArray[i])
+  //}    
+  argArray.forEach((obj) => {
+    for (key in obj){
+      newObject[key] = obj[key]
+    }
+  })
+  
   return newObject
 }
 
