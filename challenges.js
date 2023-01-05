@@ -947,7 +947,16 @@ getNumForIP( '10.0.0.1' ) // => 167772161
 -----------------------------------------------------------------*/
 // Your solution for 25-getNumForIP here:
 
-
+const getNumForIP = (string) => {
+  let array = string.split('.')
+  let n = 0
+  let sum = 0
+  for (let i = 3; i >= 0; i--){
+    sum += parseInt(array[i]) * (256 ** n)
+    n++
+  }
+  return sum
+}
 
 
 
@@ -976,7 +985,18 @@ toCamelCase( 'A_b_c' ) // => 'ABC'
 -----------------------------------------------------------------*/
 // Your solution for 26-toCamelCase here:
 
-
+const toCamelCase = (string) => {
+  let newString = ''
+  for (let i = 0; i < string.length; i++) {
+    if ( string[i] === '-' || string[i] === '_' ) {
+      newString += string[i + 1].toUpperCase()
+      i++
+    } else {
+      newString += string[i]
+    }
+  }
+  return newString
+}
 
 
 
