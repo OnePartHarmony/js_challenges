@@ -1063,7 +1063,9 @@ gridTrip( [-22, 100], 'L2L15D50U1D9') //=> [-80, 83]
 -----------------------------------------------------------------*/
 // Your solution for 28-gridTrip here:
 
+const gridTrip = (coords, moves) => {
 
+}
 
 
 
@@ -1093,7 +1095,21 @@ addChecker( [10, 15, 16, 22], 19 ) // => false
 -----------------------------------------------------------------*/
 // Your solution for 29-addChecker here:
 
-
+const addChecker = (intArray, integer) => {
+  let sumExists = false
+  intArray.forEach((int, index) => {
+    if (int >= integer) {return}
+    for (let i = index + 1; i < intArray.length; i++) {
+      if (intArray[i] === integer - int) {
+        sumExists = true
+        break
+      } else if (intArray[i] > integer - int) {
+        break
+      }
+    }
+  })
+  return sumExists
+}
 
 
 
@@ -1126,3 +1142,20 @@ totalTaskTime( [5, 2, 6, 8, 7, 2], 3 ) // => 12
 // Your solution for 30- here:
 
 
+const totalTaskTime = (taskQueue, integer) => {
+  if (taskQueue.length === 0) {
+    return 0
+  }
+  let stack = taskQueue.slice(0,integer)
+  if (taskQueue.length <= integer) {
+    return Math.max(...stack)  
+  }
+  for (let i = integer; i < taskQueue.length; i++) {
+    let lowestThread = Math.min(...stack)
+    let lowestIndex = stack.indexOf(lowestThread)
+    stack[lowestIndex] += taskQueue[i]
+    if (i === taskQueue.length - 1) {
+      return Math.max(...stack)
+    }
+  }
+}
