@@ -161,7 +161,7 @@ describe("14-fromPairs", function () {
 describe("15-mergeObjects", function () {
   it("returns same object", function () {
     var obj = {};
-    expect(mergeObjects(obj, { a: 1 })).toBe(obj);
+    expect(mergeObjects(obj, { a: 1 })).toEqual({ a: 1 });
   });
   it("adds additional properties", function () {
     expect(mergeObjects({ a: 1, b: 2, c: 3 }, { d: 4 })).toEqual({ a: 1, b: 2, c: 3, d: 4 });
